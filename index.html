@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Preventivi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title_container">
+            <h1>Pro Pipe</h1> <img class="logo_img" src="assets/pro_pipe_logo.png" alt="logo">
+        </div>
+
+        <form id="preventivoForm">
+            <label for="ore">Ore di intervento:</label>
+            <input type="number" id="ore" name="ore" min="0.5" step="0.1" required>
+
+            <label for="trasferimento">Minuti trasferimento (A/R):</label>
+            <input type="number" id="trasferimento" name="trasferimento" min="0" required>
+
+            <label for="lavoro">Tipo di lavoro:</label>
+            <select id="lavoro" name="lavoro">
+                <option value="lavello">Lavello cucina ostruito</option>
+                <option value="wc">WC ostruito/colonna</option>
+                <option value="colonna">Condotta aerea/Colonna verticale</option>
+                <option value="pozzetto">Pozzetto ostruito</option>
+            </select>
+
+            <fieldset>
+                <legend>Seleziona urgenza (opzionale, una sola):</legend>
+                <label>
+                    <input type="radio" name="urgenza" value="feriale">
+                    Urgenza feriale (+€85 IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" name="urgenza" value="sabato">
+                    Urgenza sabato/prefestivi (+€150 IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" name="urgenza" value="festivo">
+                    Urgenza festivi/domeniche (+€250 IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" name="urgenza" value="" checked>
+                    Nessuna urgenza
+                </label>
+            </fieldset>
+
+
+
+            <label for="comune">Comune di intervento:</label>
+            <select id="comune" name="comune" required>
+                <option value="">-- Seleziona una località --</option>
+                <option value="bib-bona">Bibbona</option>
+                <option value="marina-bibbona">Marina di Bibbona</option>
+                <option value="cecina">Cecina</option>
+                <option value="collemezzano">Collemezzano</option>
+                <option value="rosignano-marittimo">Rosignano Marittimo</option>
+                <option value="rosignano-solvay">Rosignano Solvay</option>
+                <option value="nibbiaia">Nibbiaia (Rosignano)</option>
+                <option value="gabbro">Gabbro (Rosignano)</option>
+                <option value="castelnuovo-misericordia">Castelnuovo della Misericordia</option>
+                <option value="quercianella">Quercianella</option>
+                <option value="chioma">Chioma</option>
+                <option value="livorno">Livorno (quartieri)</option>
+                <option value="collesalvetti">Collesalvetti</option>
+                <option value="campiglia-marittima">Campiglia Marittima</option>
+                <option value="san-vincenzo">San Vincenzo</option>
+                <option value="piombino">Piombino</option>
+                <option value="castagneto-carducci">Castagneto Carducci</option>
+                <option value="casale-marittimo">Casale Marittimo</option>
+                <option value="castellina-marittima">Castellina Marittima</option>
+                <option value="guardistallo">Guardistallo</option>
+                <option value="montescudaio">Montescudaio</option>
+                <option value="riparbella">Riparbella</option>
+                <option value="orciano-pisano">Orciano Pisano</option>
+                <option value="santa-luce">Santa Luce</option>
+                <option value="pastina">Pastina</option>
+            </select>
+
+
+            <label>
+                <input type="checkbox" id="videoCombinata"> Videoispezione in combinata (€/h)
+            </label>
+
+            <label>
+                <input type="checkbox" id="videoFinale"> Videoispezione finale (fisso)
+            </label>
+
+            <button type="submit">Calcola Preventivo</button>
+        </form>
+
+        <div id="risultato" class="risultato">
+            Inserisci i dati e calcola il preventivo.
+        </div>
+
+        <div id="messaggioCliente" class="messaggio" style="display:none;">
+        </div>
+
+    </div>
+
+    <script src="main_logic.js"></script>
+</body>
+
+</html>
