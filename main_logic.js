@@ -56,6 +56,7 @@ form.addEventListener("submit", function (e) {
 
     // === Input principali ===
     const clienteNome = document.getElementById("clienteNome").value.trim();
+    const viaCliente = document.getElementById("viaCliente").value.trim(); // 🔥 nuovo campo
     const ore = parseFloat(document.getElementById("ore").value) || 0;
     const interventoNome = document.getElementById("interventoNome").value.trim();
     const interventoCosto = parseFloat(document.getElementById("interventoCosto").value) || 0;
@@ -74,7 +75,8 @@ form.addEventListener("submit", function (e) {
         urgenze: {
             feriale: 69.67,
             sabato: 122.95,
-            festivo: 204.92
+            festivo: 204.92,
+            smart: 24.59 // 🔥 Servizi smart (+30 IVA incl.)
         }
     };
 
@@ -118,7 +120,7 @@ form.addEventListener("submit", function (e) {
     if (urgenzaSelezionata && TARIFFE.urgenze[urgenzaSelezionata]) {
         let costoUrgenza = TARIFFE.urgenze[urgenzaSelezionata];
         totaleNetto += costoUrgenza;
-        let labelUrgenza = urgenzaSelezionata.charAt(0).toUpperCase() + urgenzaSelezionata.slice(1);
+        let labelUrgenza = urgenzaSelezionata === "smart" ? "Servizi Smart" : urgenzaSelezionata.charAt(0).toUpperCase() + urgenzaSelezionata.slice(1);
         dettagli.push(`⚡ Urgenza ${labelUrgenza}: € ${costoUrgenza.toFixed(2)}`);
     }
 
@@ -135,8 +137,8 @@ form.addEventListener("submit", function (e) {
     let messaggio = `
 Buongiorno ${clienteNome ? clienteNome : ""},
 
-📍 Invio il preventivo per l’intervento richiesto presso:
-${comuneTesto}
+📍 Indirizzo: ${viaCliente}
+🏠 Comune: ${comuneTesto}
 
 📑 Dettaglio dei costi:
 ${dettagli.join("\n")}

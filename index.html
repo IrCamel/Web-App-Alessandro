@@ -15,73 +15,16 @@
         </div>
 
         <form id="preventivoForm">
-
+            <!-- 1 Nome -->
             <label for="clienteNome">Nome cliente:</label>
             <input type="text" id="clienteNome" name="clienteNome" placeholder="Inserisci il nome del cliente"
                 required />
 
-            <label for="interventoNome">Tipo di intervento:</label>
-            <input type="text" id="interventoNome" name="interventoNome" placeholder="Es. WC ostruito" required />
+            <!-- 2 Via -->
+            <label for="viaCliente">Via e n. civico:</label>
+            <input type="text" id="viaCliente" name="viaCliente" placeholder="Inserisci via e numero civico" required />
 
-            <label for="ore">Ore di intervento:</label>
-            <input type="number" id="ore" name="ore" min="0.5" step="0.1" required />
-
-            <label for="interventoCosto">Costo orario intervento (€):</label>
-            <input type="number" id="interventoCosto" name="interventoCosto" step="0.01" required />
-
-            <fieldset>
-                <legend>Seleziona urgenza (opzionale, una sola):</legend>
-
-                <label>
-                    <input type="radio" class="input" name="urgenza" value="feriale">
-                    Urgenza feriale (+€85 IVA incl.)
-                </label><br>
-
-                <label>
-                    <input type="radio" class="input" name="urgenza" value="sabato">
-                    Urgenza sabato/prefestivi (+€150 IVA incl.)
-                </label><br>
-
-                <label>
-                    <input type="radio" class="input" name="urgenza" value="festivo">
-                    Urgenza festivi/domeniche (+€250 IVA incl.)
-                </label><br>
-
-                <label>
-                    <input type="radio" class="input" name="urgenza" value="" checked>
-                    Nessuna urgenza
-                </label>
-            </fieldset>
-
-
-            <!-- Maggiorazione trasferimento -->
-            <!-- KM: contenitore verticale -->
-            <div class="maggiorazione-row">
-                <label class="cl-checkbox" for="checkKm">
-                    <input type="checkbox" id="checkKm" />
-                    <span> Maggiorazione per km</span>
-                </label>
-
-                <div id="inputKm" class="animated-input" aria-hidden="true">
-                    <label for="km" class="sub-label">Chilometri A/R:</label>
-                    <input type="number" id="km" name="km" min="0" step="1" placeholder="Inserisci km A/R" />
-                </div>
-            </div>
-
-            <!-- MINUTI: contenitore verticale -->
-            <div class="maggiorazione-row">
-                <label class="cl-checkbox" for="checkMinuti">
-                    <input type="checkbox" id="checkMinuti" />
-                    <span> Maggiorazione per minuti</span>
-                </label>
-
-                <div id="inputMinuti" class="animated-input" aria-hidden="true">
-                    <label for="trasferimento" class="sub-label">Minuti trasferimento (A/R):</label>
-                    <input type="number" id="trasferimento" name="trasferimento" min="0" step="1"
-                        placeholder="Inserisci minuti A/R" />
-                </div>
-            </div>
-
+            <!-- 3 Comune -->
             <label for="comune">Comune di intervento:</label>
             <select id="comune" name="comune" required>
                 <option value="">-- Seleziona una località --</option>
@@ -93,9 +36,7 @@
                 <option value="rosignano-solvay">Rosignano Solvay</option>
                 <option value="nibbiaia">Nibbiaia (Rosignano)</option>
                 <option value="gabbro">Gabbro (Rosignano)</option>
-                <option value="castelnuovo-misericordia">
-                    Castelnuovo della Misericordia
-                </option>
+                <option value="castelnuovo-misericordia">Castelnuovo della Misericordia</option>
                 <option value="quercianella">Quercianella</option>
                 <option value="chioma">Chioma</option>
                 <option value="livorno">Livorno (quartieri)</option>
@@ -114,6 +55,61 @@
                 <option value="pastina">Pastina</option>
             </select>
 
+            <!-- 4 Km/Minuti maggiorazione -->
+            <div class="maggiorazione-row">
+                <label class="cl-checkbox" for="checkKm">
+                    <input type="checkbox" id="checkKm" />
+                    <span> Maggiorazione per km</span>
+                </label>
+                <div id="inputKm" class="animated-input" aria-hidden="true">
+                    <label for="km" class="sub-label">Chilometri A/R:</label>
+                    <input type="number" id="km" name="km" min="0" step="1" placeholder="Inserisci km A/R" />
+                    <label class="cl-checkbox iva-label">
+                        <input type="checkbox" id="kmLordo" />
+                        <span> Importo lordo + IVA</span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="maggiorazione-row">
+                <label class="cl-checkbox" for="checkMinuti">
+                    <input type="checkbox" id="checkMinuti" />
+                    <span> Maggiorazione per minuti</span>
+                </label>
+                <div id="inputMinuti" class="animated-input" aria-hidden="true">
+                    <label for="trasferimento" class="sub-label">Minuti trasferimento (A/R):</label>
+                    <input type="number" id="trasferimento" name="trasferimento" min="0" step="1"
+                        placeholder="Inserisci minuti A/R" />
+                    <label class="cl-checkbox iva-label">
+                        <input type="checkbox" id="minutiLordo" />
+                        <span> Importo lordo + IVA</span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- 5 Tipo di intervento -->
+            <label for="interventoNome">Tipo di intervento:</label>
+            <input type="text" id="interventoNome" name="interventoNome" placeholder="Es. WC ostruito" required />
+
+            <!-- 6 Ore di intervento -->
+            <label for="ore">Ore di intervento:</label>
+            <input type="number" id="ore" name="ore" min="0.5" step="0.1" required />
+
+            <!-- 7 Costo orario intervento -->
+            <label for="interventoCosto">Costo orario intervento (€):</label>
+            <input type="number" id="interventoCosto" name="interventoCosto" step="0.01" required />
+            <label class="cl-checkbox iva-label">
+                <input type="checkbox" id="interventoLordo" />
+                <span> Importo lordo + IVA</span>
+            </label>
+
+            <hr class="divider">
+
+            <!-- 8 Maggiorazione videoispezione -->
             <label class="cl-checkbox">
                 <input type="checkbox" id="videoCombinata" />
                 <span> Videoispezione in combinata</span>
@@ -124,19 +120,38 @@
                 <span> Videoispezione finale</span>
             </label>
 
+            <!-- 9 Urgenze -->
+            <fieldset>
+                <legend>Seleziona urgenza (opzionale, una sola):</legend>
+                <label>
+                    <input type="radio" class="input" name="urgenza" value="feriale"> Urgenza feriale (+€85 IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" class="input" name="urgenza" value="sabato"> Urgenza sabato/prefestivi (+€150
+                    IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" class="input" name="urgenza" value="festivo"> Urgenza festivi/domeniche (+€250
+                    IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" class="input" name="urgenza" value="smart"> Servizi smart (+€30 IVA incl.)
+                </label><br>
+                <label>
+                    <input type="radio" class="input" name="urgenza" value="" checked> Nessuna urgenza
+                </label>
+            </fieldset>
+
+            <!-- Pulsanti -->
             <div class="button-group">
                 <button type="submit">Calcola Preventivo</button>
                 <button type="button" id="resetBtn">Reset</button>
             </div>
         </form>
 
-        <div id="risultato" class="risultato">
-            Inserisci i dati e calcola il preventivo.
-        </div>
-
+        <div id="risultato" class="risultato">Inserisci i dati e calcola il preventivo.</div>
         <div id="messaggioCliente" class="messaggio" style="display: none"></div>
     </div>
-
     <script src="main_logic.js"></script>
 </body>
 
